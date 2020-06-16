@@ -2,6 +2,8 @@ package sf1_sim_pkg;
     timeunit 1ns;
     timeprecision 100ps;
 
+    typedef enum {FAIL, TRUE} pf_e;
+
     class DataPkt#(parameter DW=7);
         rand bit [DW-1:0] fifo_data;
     endclass : DataPkt
@@ -43,7 +45,7 @@ package sf1_sim_pkg;
 
         task run();
             DataPkt#(DW) data;
-            uint32_t pshCnt;
+            int pshCnt;
 
             forever
                 begin
@@ -115,7 +117,7 @@ package sf1_sim_pkg;
         task run();
             DataPkt#(DW) d_out;
             DataPkt#(DW) d_sb;
-            uint32_t cnt_total;
+            int cnt_total;
             pf_e chk;
 
             forever
